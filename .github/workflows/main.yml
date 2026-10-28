@@ -1,5 +1,4 @@
-
-name: Android APK oluştur
+name: Ev Hatırlatıcım Android APK
 
 on:
   workflow_dispatch:
@@ -9,10 +8,11 @@ permissions:
 
 jobs:
   build:
+    name: Android APK oluştur
     runs-on: ubuntu-latest
 
     steps:
-      - name: Kaynak kodu al
+      - name: Kaynak kodunu al
         uses: actions/checkout@v4
 
       - name: Node.js kur
@@ -21,18 +21,24 @@ jobs:
           node-version: 22
 
       - name: Java kur
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
-       - name: Android SDK kur
+      - name: Android SDK kur
         uses: android-actions/setup-android@v4
         with:
           packages: 'platform-tools'
           accept-android-sdk-licenses: true
           log-accepted-android-sdk-licenses: false
-  
+
+      - name: Gerekli proje dosyalarını kontrol et
+        run: |
+          test -f package.json
+          test -f capacitor.config.ts
+          test -f www/index.html
+
       - name: Bağımlılıkları yükle
         run: npm install
 
@@ -47,8 +53,10 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: APK dosyasını paylaş
+      - name: APK dosyasını yükle
         uses: actions/upload-artifact@v4
         with:
-          name: ev-hatirlaticim-debug-apk
+          name: ev-hatirlaticim-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
