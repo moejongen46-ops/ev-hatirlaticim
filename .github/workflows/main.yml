@@ -26,12 +26,13 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Android SDK kur
-        uses: android-actions/setup-android@v3
-
-      - name: Android SDK lisanslarını kabul et
-        run: yes | sdkmanager --licenses
-
+       - name: Android SDK kur
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
+          accept-android-sdk-licenses: true
+          log-accepted-android-sdk-licenses: false
+  
       - name: Bağımlılıkları yükle
         run: npm install
 
