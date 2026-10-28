@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#11131b">
+<title>Ev Hatırlatıcım</title>
+<style>
+:root{--bg:#10121a;--panel:#171b25;--panel2:#202532;--line:#2b3140;--text:#f5f4fb;--muted:#a9afc0;--purple:#8b5cf6;--purple2:#6d3bea;--green:#31c48d;--danger:#fb7185}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top left,#242039 0,transparent 42%),var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit;border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:var(--panel2)}button.primary{background:linear-gradient(135deg,var(--purple),var(--purple2));border:0;font-weight:700}button:active{transform:scale(.99)}
+.app{max-width:1050px;margin:auto;padding:16px 14px 92px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#a78bfa,#5b21b6);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 28px #7c3aed33}.brand h1{font-size:18px;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.date{font-size:12px;color:var(--muted);text-align:right}
+h2{font-size:22px;margin:8px 0 5px}h3{font-size:15px;margin:0 0 13px}.muted{color:var(--muted)}.small{font-size:12px}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#1a1e29,#151821);border:1px solid var(--line);border-radius:18px;padding:16px;min-width:0}.welcome{grid-column:span 12;display:flex;justify-content:space-between;align-items:center;gap:12px}.welcome h2{margin-top:0}.stat{grid-column:span 4}.stat .value{font-size:28px;font-weight:750;letter-spacing:-1px}.stat .label{font-size:12px;color:var(--muted)}.section{grid-column:span 6}.full{grid-column:span 12}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.task{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid #282d39}.task:last-child{border-bottom:0}.task input{accent-color:var(--purple);width:18px;height:18px;margin-top:2px}.tasktext{flex:1;min-width:0}.tasktext.done{text-decoration:line-through;color:var(--muted)}.tasktitle{font-weight:600;overflow-wrap:anywhere}.taskmeta{font-size:12px;color:var(--muted);margin-top:3px}.iconbtn{padding:6px 9px;border-radius:9px}.prayers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.prayer{border:1px solid var(--line);border-radius:13px;padding:12px 8px;text-align:center;background:#171b25}.prayer.active{border-color:var(--purple);background:#30234d}.prayer .pname{font-size:12px;color:var(--muted)}.prayer .ptime{font-weight:700;margin:5px 0}.prayer label{font-size:12px;color:var(--muted)}.prayer input{accent-color:var(--purple)}.nav{position:fixed;bottom:0;left:0;right:0;z-index:5;background:#11131bf2;backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;justify-content:center;padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));gap:4px}.nav button{flex:1;max-width:150px;border:0;background:transparent;color:var(--muted);font-size:11px;padding:8px 4px}.nav button span{display:block;font-size:19px;margin-bottom:3px}.nav button.active{background:#332452;color:#e8dfff;border-radius:12px}.view{display:none}.view.active{display:block}.formrow{display:flex;gap:8px;margin:10px 0}.formrow input,.formrow textarea,.formrow select,.field input,.field select,.field textarea{width:100%;min-width:0;background:#10131c;border:1px solid var(--line);border-radius:11px;padding:11px;color:var(--text);outline:none}.formrow input:focus,.field input:focus{border-color:var(--purple)}.formrow .primary{white-space:nowrap}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;color:var(--muted)}.empty{color:var(--muted);padding:18px 0;text-align:center}.calendarhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.calday{text-align:center;padding:9px 0;border-radius:9px;background:#171b25;border:1px solid transparent;font-size:13px}.calday.other{color:#5e6678;background:transparent}.calday.selected{background:#7041d9;border-color:#a78bfa}.calday.has{box-shadow:inset 0 -3px var(--purple)}.pill{font-size:11px;border:1px solid var(--line);border-radius:20px;padding:5px 8px;color:var(--muted)}.notice{border:1px solid #514078;background:#261e3a;padding:12px;border-radius:12px;color:#d9c8ff;font-size:12px;line-height:1.5}.settingsrow{padding:12px 0;border-bottom:1px solid var(--line)}.settingsrow:last-child{border:0}.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#29213c;border:1px solid #6348a5;padding:10px 16px;border-radius:12px;z-index:10;display:none;box-shadow:0 8px 30px #0005}
+@media(min-width:700px){.app{padding-top:24px}.welcome{grid-column:span 12}.stat{grid-column:span 4}.section{grid-column:span 6}.prayers{grid-template-columns:repeat(6,1fr)}.nav{top:0;bottom:auto;position:sticky;background:transparent;border:0;justify-content:flex-end;margin-top:-58px;margin-bottom:26px;padding:0 0 0 240px;pointer-events:none}.nav button{pointer-events:auto;flex:0 0 auto;font-size:12px;padding:9px 12px}.nav button span{display:none}.app{padding-bottom:40px}}
+@media(max-width:420px){.app{padding:12px 10px 88px}.card{padding:13px}.stat{grid-column:span 4}.stat .value{font-size:22px}.section{grid-column:span 12}.welcome h2{font-size:19px}.prayers{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="logo">☾</div><div><h1>Ev Hatırlatıcım</h1><p>Daha düzenli, daha huzurlu bir yaşam</p></div></div>
+    <div class="date" id="todayLabel"></div>
+  </header>
+  <nav class="nav" aria-label="Ana menü">
+    <button data-view="home" class="active"><span>⌂</span>Ana Sayfa</button>
+    <button data-view="prayer"><span>☾</span>Namaz</button>
+    <button data-view="tasks"><span>☑</span>Görevler</button>
+    <button data-view="calendar"><span>▦</span>Takvim</button>
+    <button data-view="media"><span>▧</span>Medyalar</button>
+    <button data-view="settings"><span>⚙</span>Ayarlar</button>
+  </nav>
+  <main>
+    <section id="view-home" class="view active">
+      <div class="grid">
+        <div class="card welcome"><div><div class="pill">KİŞİSEL PANELİN</div><h2 id="greeting">Merhaba 👋</h2><div class="muted small">Bugün kendin için güzel bir adım at.</div></div><div style="font-size:38px">🌙</div></div>
+        <div class="card stat"><div class="label">Bugünkü görevler</div><div class="value" id="taskStat">0/0</div><div class="label">tamamlandı</div></div>
+        <div class="card stat"><div class="label">Namaz takibi</div><div class="value" id="prayerStat">0/6</div><div class="label">işaretlendi</div></div>
+        <div class="card stat"><div class="label">Etkinlikler</div><div class="value" id="eventStat">0</div><div class="label">bugün</div></div>
+        <div class="card section"><div class="row"><h3>Bugünkü Görevler</h3><button class="iconbtn" data-goto="tasks">Tümünü gör →</button></div><div id="homeTasks"></div></div>
+        <div class="card section"><div class="row"><h3>Namaz Takibi</h3><button class="iconbtn" data-goto="prayer">Aç →</button></div><div id="homePrayers" class="prayers"></div></div>
+        <div class="card full"><div class="row"><h3>Bugün için not</h3><span class="pill">Bu cihazda saklanır</span></div><textarea id="dailyNote" rows="3" placeholder="Bugün hatırlamak istediğin bir şey..." style="width:100%;resize:vertical;background:#10131c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px"></textarea><div class="row" style="margin-top:9px;justify-content:flex-end"><button class="primary" id="saveNote">Notu kaydet</button></div></div>
+      </div>
+    </section>
+    <section id="view-tasks" class="view">
+      <div class="card"><div class="row"><div><h2>Görevler</h2><p class="muted small">Planla, tamamla, ilerle.</p></div><span class="pill" id="taskCount">0 görev</span></div>
+        <form id="taskForm"><div class="field"><label>Görev adı</label><input id="taskTitle" required maxlength="120" placeholder="Örn. 30 dakika ders çalış"></div><div class="formrow"><input id="taskDate" type="date" required><input id="taskTime" type="time" aria-label="Saat"></div><div class="formrow"><input id="taskDesc" maxlength="240" placeholder="Açıklama (isteğe bağlı)"><button class="primary" type="submit">+ Ekle</button></div></form>
+      </div>
+      <div class="card" style="margin-top:12px"><div class="row"><h3>Görev listem</h3><select id="taskFilter" style="background:#10131c;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:7px"><option value="all">Tümü</option><option value="open">Devam eden</option><option value="done">Tamamlanan</option></select></div><div id="taskList"></div></div>
+    </section>
+    <section id="view-prayer" class="view">
+      <div class="card"><div class="row"><div><h2>Namaz Takibi</h2><p class="muted small" id="prayerDateLabel"></p></div><input type="date" id="prayerDate" style="max-width:155px;background:#10131c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px"></div><div class="notice" style="margin:14px 0">Namaz vakitlerini aşağıdaki ayarlardan kendin girebilirsin. Bu ilk sürümde otomatik vakit servisi bağlı değildir.</div><div class="prayers" id="prayerGrid"></div><div class="row" style="margin-top:16px"><span class="muted small">Günlük ilerleme</span><strong id="prayerProgress">0 / 6</strong></div><div style="height:7px;background:#292f3c;border-radius:8px;margin-top:8px;overflow:hidden"><div id="prayerBar" style="height:100%;width:0;background:linear-gradient(90deg,#a78bfa,#7c3aed);border-radius:8px"></div></div></div>
+      <div class="card" style="margin-top:12px"><h3>Vakit saatlerini düzenle</h3><div id="prayerTimesForm" class="prayers"></div><div class="row" style="margin-top:12px;justify-content:flex-end"><button class="primary" id="savePrayerTimes">Saatleri kaydet</button></div></div>
+    </section>
+    <section id="view-calendar" class="view">
+      <div class="card"><div class="calendarhead"><button id="prevMonth">‹</button><h2 id="monthLabel" style="font-size:18px"></h2><button id="nextMonth">›</button></div><div class="calgrid" id="calendarGrid"></div><div style="margin-top:15px;padding-top:12px;border-top:1px solid var(--line)"><div class="row"><h3 id="selectedDateLabel">Etkinlikler</h3><span class="pill" id="eventCount">0 etkinlik</span></div><div id="eventList"></div></div></div>
+      <div class="card" style="margin-top:12px"><h3>Etkinlik ekle</h3><form id="eventForm"><div class="field"><label>Etkinlik adı</label><input id="eventTitle" required maxlength="120" placeholder="Örn. Doktor randevusu"></div><div class="formrow"><input id="eventDate" type="date" required><input id="eventTime" type="time" aria-label="Etkinlik saati"></div><div class="formrow"><input id="eventDesc" placeholder="Not (isteğe bağlı)" maxlength="240"><button class="primary" type="submit">+ Ekle</button></div></form></div>
+    </section>
+    <section id="view-media" class="view">
+      <div class="card"><h2>Medyalarım</h2><p class="muted small">Fotoğraf ve videoları bu tarayıcı oturumunda seçip görüntüleyebilirsin. Büyük medya dosyaları kalıcı olarak kopyalanmaz.</p><div class="field"><label>Telefondan fotoğraf veya video seç</label><input id="mediaPicker" type="file" accept="image/*,video/*" multiple></div><div id="mediaGrid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px"></div></div>
+    </section>
+    <section id="view-settings" class="view">
+      <div class="card"><h2>Profil ve Ayarlar</h2><p class="muted small">Kişisel tercihlerin bu cihazda saklanır.</p><form id="settingsForm"><div class="field"><label>Adın</label><input id="profileName" maxlength="60" placeholder="Adını yaz"></div><div class="field"><label>Şehir</label><input id="profileCity" maxlength="80" placeholder="Örn. İstanbul"></div><div class="field"><label>Ülke</label><input id="profileCountry" maxlength="80" placeholder="Türkiye"></div><div class="field"><label>Günlük hedefin</label><input id="profileGoal" maxlength="160" placeholder="Örn. Her gün 30 dakika okumak"></div><button class="primary" type="submit" style="width:100%">Profili kaydet</button></form></div>
+      <div class="card" style="margin-top:12px"><h3>Verilerim</h3><div class="settingsrow"><div class="row"><div><strong>Yedek dışa aktar</strong><div class="muted small">Görevlerini, etkinliklerini ve ayarlarını JSON olarak kaydet.</div></div><button id="exportData">Dışa aktar</button></div></div><div class="settingsrow"><div class="row"><div><strong>Yedeği içe aktar</strong><div class="muted small">Daha önce aldığın JSON yedeğini geri yükle.</div></div><button id="importButton">İçe aktar</button><input type="file" id="importFile" accept="application/json,.json" hidden></div></div><div class="settingsrow"><div class="row"><div><strong>Yerel verileri sil</strong><div class="muted small">Bu cihazdaki uygulama kayıtlarını siler.</div></div><button id="clearData" style="color:var(--danger)">Sil</button></div></div></div>
+      <div class="notice" style="margin-top:12px">Bilgi: Bu prototipte veriler yalnızca aynı tarayıcı/cihazdaki yerel depolamada tutulur. Tarayıcı verilerini temizlemek kayıtları silebilir. Gerçek bulut senkronizasyonu, otomatik namaz vakitleri ve Google Takvim henüz bağlı değildir.</div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const defaultTimes={"İmsak":"05:12","Güneş":"06:38","Öğle":"13:02","İkindi":"16:15","Akşam":"19:07","Yatsı":"20:27"};
+const names=Object.keys(defaultTimes);
+const initial={tasks:[],events:[],prayerLogs:{},prayerTimes:defaultTimes,profile:{name:"",city:"",country:"Türkiye",goal:""},notes:{}};
+let state=loadState(), selectedDate=today(), calendarDate=new Date();
+function loadState(){try{return {...structuredClone(initial),...JSON.parse(localStorage.getItem('evhatirlaticim-v1')||'{}')}}catch(e){return structuredClone(initial)}}
+function save(){localStorage.setItem('evhatirlaticim-v1',JSON.stringify(state));renderAll()}
+function toast(s){const el=$('toast');el.textContent=s;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2200)}
+function fmtDate(s){if(!s)return '';const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'})}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function logFor(date){if(!state.prayerLogs[date])state.prayerLogs[date]={};return state.prayerLogs[date]}
+function renderHome(){
+ const tasks=state.tasks.filter(t=>t.date===today()),done=tasks.filter(t=>t.done).length;
+ $('taskStat').textContent=`${done}/${tasks.length}`;$('prayerStat').textContent=`${names.filter(n=>logFor(today())[n]).length}/6`;$('eventStat').textContent=state.events.filter(e=>e.date===today()).length;
+ $('homeTasks').innerHTML=tasks.length?tasks.slice(0,5).map(t=>`<div class="task"><input type="checkbox" ${t.done?'checked':''} data-task-toggle="${t.id}"><div class="tasktext ${t.done?'done':''}"><div class="tasktitle">${escapeHtml(t.title)}</div><div class="taskmeta">${escapeHtml(t.time||'Saat belirtilmedi')}</div></div></div>`).join(''):'<div class="empty">Bugün için görev yok. Yeni bir görev ekleyebilirsin.</div>';
+ $('homePrayers').innerHTML=names.map(n=>`<div class="prayer ${logFor(today())[n]?'active':''}"><div class="pname">${n}</div><div class="ptime">${escapeHtml(state.prayerTimes[n]||'--:--')}</div><input type="checkbox" aria-label="${n} tamamlandı" data-prayer-toggle="${n}" ${logFor(today())[n]?'checked':''}></div>`).join('');
+ $('dailyNote').value=state.notes[today()]||'';
+}
+function renderTasks(){
+ const filter=$('taskFilter').value;let tasks=[...state.tasks].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+ if(filter==='open')tasks=tasks.filter(t=>!t.done);if(filter==='done')tasks=tasks.filter(t=>t.done);
+ $('taskCount').textContent=`${state.tasks.length} görev`;
+ $('taskList').innerHTML=tasks.length?tasks.map(t=>`<div class="task"><input type="checkbox" data-task-toggle="${t.id}" ${t.done?'checked':''}><div class="tasktext ${t.done?'done':''}"><div class="tasktitle">${escapeHtml(t.title)}</div><div class="taskmeta">${fmtDate(t.date)} ${t.time?'· '+escapeHtml(t.time):''}${t.desc?' · '+escapeHtml(t.desc):''}</div></div><button class="iconbtn" title="Sil" data-task-delete="${t.id}">✕</button></div>`).join(''):'<div class="empty">Bu filtrede görev bulunmuyor.</div>';
+}
+function renderPrayer(){
+ $('prayerDate').value=selectedDate;$('prayerDateLabel').textContent=fmtDate(selectedDate);
+ const logs=logFor(selectedDate),count=names.filter(n=>logs[n]).length;
+ $('prayerProgress').textContent=`${count} / 6`;$('prayerBar').style.width=`${count/6*100}%`;
+ $('prayerGrid').innerHTML=names.map(n=>`<div class="prayer ${logs[n]?'active':''}"><div class="pname">${n}</div><div class="ptime">${escapeHtml(state.prayerTimes[n]||'--:--')}</div><label><input type="checkbox" data-prayer-toggle="${n}" ${logs[n]?'checked':''}> Kıldım</label></div>`).join('');
+ $('prayerTimesForm').innerHTML=names.map(n=>`<div class="field" style="margin:0"><label>${n}</label><input type="time" data-prayer-time="${n}" value="${escapeHtml(state.prayerTimes[n]||'')}" style="width:100%;background:#10131c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px"></div>`).join('');
+}
+function renderCalendar(){
+ const y=calendarDate.getFullYear(),m=calendarDate.getMonth();$('monthLabel').textContent=calendarDate.toLocaleDateString('tr-TR',{month:'long',year:'numeric'});
+ const first=new Date(y,m,1),start=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();
+ const headers=['Pt','Sa','Ça','Pe','Cu','Ct','Pa'];let html=headers.map(x=>`<div class="muted small" style="text-align:center;padding:6px 0">${x}</div>`).join('');
+ for(let i=0;i<42;i++){let day,date,other=false;if(i<start){day=prevDays-start+i+1;date=`${y}-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`;other=true}else if(i>=start+days){day=i-start-days+1;const dt=new Date(y,m+1,day);date=todayString(dt);other=true}else{day=i-start+1;date=`${y}-${String(m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`}
+ const has=state.events.some(e=>e.date===date)||state.tasks.some(t=>t.date===date);html+=`<button class="calday ${other?'other':''} ${date===selectedDate?'selected':''} ${has?'has':''}" data-calendar-date="${date}">${day}</button>`;
+ }
+ $('calendarGrid').innerHTML=html;
+ const events=state.events.filter(e=>e.date===selectedDate).sort((a,b)=>(a.time||'').localeCompare(b.time||''));const tasks=state.tasks.filter(t=>t.date===selectedDate);
+ $('selectedDateLabel').textContent=fmtDate(selectedDate);$('eventCount').textContent=`${events.length} etkinlik · ${tasks.length} görev`;
+ $('eventList').innerHTML=[...events.map(e=>({kind:'Etkinlik',...e})),...tasks.map(t=>({kind:'Görev',...t}))].sort((a,b)=>(a.time||'').localeCompare(b.time||'')).map(e=>`<div class="task"><div style="font-size:20px">${e.kind==='Etkinlik'?'◷':'☑'}</div><div class="tasktext"><div class="tasktitle">${escapeHtml(e.title)}</div><div class="taskmeta">${escapeHtml(e.time||'Saat belirtilmedi')} · ${e.kind}</div></div>${e.kind==='Etkinlik'?`<button class="iconbtn" data-event-delete="${e.id}">✕</button>`:''}</div>`).join('')||'<div class="empty">Bu tarihte kayıt yok.</div>';
+ $('eventDate').value=selectedDate;
+}
+function todayString(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function renderSettings(){$('profileName').value=state.profile.name||'';$('profileCity').value=state.profile.city||'';$('profileCountry').value=state.profile.country||'Türkiye';$('profileGoal').value=state.profile.goal||'';$('greeting').textContent=`Merhaba${state.profile.name?', '+state.profile.name:''} 👋`}
+function renderAll(){const now=new Date();$('todayLabel').textContent=now.toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});renderHome();renderTasks();renderPrayer();renderCalendar();renderSettings()}
+function switchView(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+v));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===v));if(v==='tasks')renderTasks();if(v==='calendar')renderCalendar();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
+document.addEventListener('click',e=>{const go=e.target.closest('[data-goto]');if(go)switchView(go.dataset.goto);
+ const del=e.target.closest('[data-task-delete]');if(del&&confirm('Bu görevi silmek istiyor musun?')){state.tasks=state.tasks.filter(t=>String(t.id)!==del.dataset.taskDelete);save();toast('Görev silindi')}
+ const ed=e.target.closest('[data-event-delete]');if(ed&&confirm('Bu etkinlik silinsin mi?')){state.events=state.events.filter(t=>String(t.id)!==ed.dataset.eventDelete);save();toast('Etkinlik silindi')}
+ const day=e.target.closest('[data-calendar-date]');if(day){selectedDate=day.dataset.calendarDate;calendarDate=new Date(selectedDate+'T12:00:00');renderCalendar()}
+});
+document.addEventListener('change',e=>{const t=e.target.closest('[data-task-toggle]');if(t){const task=state.tasks.find(x=>String(x.id)===t.dataset.taskToggle);if(task)task.done=t.checked;save()}
+ const p=e.target.closest('[data-prayer-toggle]');if(p){logFor(selectedDate)[p.dataset.prayerToggle]=p.checked;save()}
+});
+$('taskForm').addEventListener('submit',e=>{e.preventDefault();state.tasks.push({id:Date.now(),title:$('taskTitle').value.trim(),desc:$('taskDesc').value.trim(),date:$('taskDate').value||today(),time:$('taskTime').value,done:false});$('taskTitle').value='';$('taskDesc').value='';$('taskTime').value='';save();toast('Görev kaydedildi')});
+$('taskFilter').addEventListener('change',renderTasks);
+$('prayerDate').addEventListener('change',e=>{selectedDate=e.target.value||today();renderPrayer();renderCalendar()});
+$('savePrayerTimes').addEventListener('click',()=>{document.querySelectorAll('[data-prayer-time]').forEach(i=>state.prayerTimes[i.dataset.prayerTime]=i.value);save();toast('Namaz saatleri kaydedildi')});
+$('eventForm').addEventListener('submit',e=>{e.preventDefault();state.events.push({id:Date.now(),title:$('eventTitle').value.trim(),desc:$('eventDesc').value.trim(),date:$('eventDate').value||selectedDate,time:$('eventTime').value});$('eventTitle').value='';$('eventDesc').value='';$('eventTime').value='';save();toast('Etkinlik kaydedildi')});
+$('prevMonth').addEventListener('click',()=>{calendarDate.setMonth(calendarDate.getMonth()-1);renderCalendar()});$('nextMonth').addEventListener('click',()=>{calendarDate.setMonth(calendarDate.getMonth()+1);renderCalendar()});
+$('saveNote').addEventListener('click',()=>{state.notes[today()]=$('dailyNote').value;save();toast('Not kaydedildi')});
+$('settingsForm').addEventListener('submit',e=>{e.preventDefault();state.profile={name:$('profileName').value.trim(),city:$('profileCity').value.trim(),country:$('profileCountry').value.trim(),goal:$('profileGoal').value.trim()};save();toast('Profil kaydedildi')});
+$('mediaPicker').addEventListener('change',e=>{const grid=$('mediaGrid');grid.innerHTML='';[...e.target.files].forEach(file=>{const url=URL.createObjectURL(file),el=document.createElement('div');el.className='card';el.style.padding='7px';el.innerHTML=`<div class="muted small" style="overflow-wrap:anywhere;margin-bottom:6px">${escapeHtml(file.name)}</div>`;if(file.type.startsWith('image/')){const img=document.createElement('img');img.src=url;img.style.cssText='width:100%;border-radius:9px;display:block';el.appendChild(img)}else{const v=document.createElement('video');v.src=url;v.controls=true;v.style.cssText='width:100%;border-radius:9px';el.appendChild(v)}grid.appendChild(el)})});
+$('exportData').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ev-hatirlaticim-yedek-'+today()+'.json';a.click();URL.revokeObjectURL(url);toast('Yedek dosyası hazır')});
+$('importButton').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const d=JSON.parse(await file.text());if(!d||!Array.isArray(d.tasks)||!Array.isArray(d.events))throw new Error();if(confirm('Mevcut kayıtların yedek dosyasındaki verilerle değiştirilsin mi?')){state={...structuredClone(initial),...d};save();toast('Yedek geri yüklendi')}}catch(err){alert('Yedek dosyası okunamadı. Doğru JSON dosyasını seç.')}e.target.value=''});
+$('clearData').addEventListener('click',()=>{if(confirm('Bu cihazdaki tüm görev, etkinlik, namaz ve profil kayıtları silinsin mi? Bu işlem geri alınamaz.')){state=structuredClone(initial);save();toast('Yerel kayıtlar silindi')}});
+$('taskDate').value=today();$('eventDate').value=today();renderAll();
+</script>
+</body>
+</html>
