@@ -1,0 +1,17 @@
+{
+  "name": "ev-hatirlaticim",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ev Hat\u0131rlat\u0131c\u0131m Android wrapper build",
+  "scripts": {
+    "build": "node -e \"console.log('Static app assets are in www/')\"",
+    "android:sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3"
+  }
+}
